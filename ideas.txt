@@ -10,3 +10,4 @@ This is a txt file to jot down a few ideas for projects I can do in the future. 
 This one is a little smaller. 
 1. Create a front end web app to something small. Even if it's just pulling top stats on the server.
 
+2. Create a program that finds a google image and pulls the first result to use it as an asset. 
