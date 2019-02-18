@@ -1,0 +1,12 @@
+This is a txt file to jot down a few ideas for projects I can do in the future. This list will probably remain small for now. 
+
+# Big Project - High Level
+1. Create something that can scan your network for routers or switches. It should be able to poll them for their config, write that config to a file for ease of upload, save important stuff in a database. 
+    a. Start with CLI only interface. TUI if you're feeling frisky.
+
+    b. Develop a web front end to interact with the backend. 
+    (There is no doubt in my mind that something like this already exists since this would basically be using the TFTP protocol and some SSH keys or auth. RANCID and git already do this basically. My main goal would be to try and reinvent the wheel and get as close as I can to it.)
+
+This one is a little smaller. 
+1. Create a front end web app to something small. Even if it's just pulling top stats on the server.
+
