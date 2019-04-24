@@ -1,12 +1,9 @@
 class Car:
     """
-    Docstring describing the class
+    Car models a car w/ tires and an engine
     """
 
-    def __init__(self):
-        """
-        Docstring describing the method
-        """
-        pass
-    
+    def __init__(self, engine, tires):
+        self.engine = engine
+        self.tires = tires
     
