@@ -30,9 +30,7 @@ def calcPi(iterations):
 # START PROGRAM
 while userIter not in range(1, 11):
     try:
-        print(
-        """How many decimal places of Pi would you like to return?\n 
-        You can enter between numbers 1 and 10: """, end='')
+        print("How many decimal places of Pi would you like to return?\nYou can enter between numbers 1 and 10: ", end='')
         userIter = int(input())
     except:
         print("Error occurred. Please try again. ")
