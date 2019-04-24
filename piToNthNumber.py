@@ -1,8 +1,8 @@
 # Calculate Pi to the Nth number
-# Program uses the Nilikantha Series to generate Pi. I am limiting it to 10. 
+# Program uses the Nilikantha Series to generate Pi. I am limiting it to 15 as the built in constat for Python is 15. 
 # Pi is obviously already known. The goal was to generate Pi to a certain amount and not have to check it manually, even if it is added as a check. 
 from decimal import Decimal, getcontext
-import time
+import time, math
 startTime = time.time()
 
 # CONSTANTS
@@ -10,7 +10,7 @@ ADDITER = 2
 getcontext().prec = 100
 
 # SET VARS
-piTenDigits = '3.1415926535'
+piFifteenDigits = str(math.pi)
 totalIter = 1
 userIter = 0
 
@@ -46,7 +46,7 @@ feedback = calcPi(ADDITER)
 print(len(feedback))
 
 # Slice the returned value at 2 instead of 0 so it matches the values after the decimal point so it doesn't match up to 3. 
-while feedback[2:userIter + 2] not in piTenDigits:
+while feedback[2:userIter + 2] not in piFifteenDigits:
     ADDITER += 1
     feedback = calcPi(ADDITER)
     totalIter += 1
