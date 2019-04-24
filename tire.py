@@ -9,3 +9,10 @@ class Tire:
         self.diameter = diameter
         self.brand = brand
         self.construction = construction
+    
+    def __repr__(self):
+        """
+        Represents the tire's information in the standard notation present on the side of the tire. Example: "P215/65R15"
+        """
+        return (f"{self.tire_type}{self.width}/{self.ratio}"
+        + f"{self.construction}{self.diameter}")
