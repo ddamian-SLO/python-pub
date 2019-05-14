@@ -36,9 +36,9 @@ class Tire:
 
 # Inherited class from Tire.
 class SnowTire(Tire):
-    # Define new 
     def __init__(self, tire_type, width, ratio, diameter, chain_thickness, brand='', construction='R'):
-        super().__init__(self, tire_type, width, ratio, diameter)
+    #    Tire.__init__(self, tire_type, width, ratio, diameter, brand, construction)
+        super().__init__(tire_type, width, ratio, diameter, brand, construction)
         self.chain_thickness = chain_thickness
 
     # Override superclass circumference method, use chain thickness in calc.    
@@ -50,7 +50,8 @@ class SnowTire(Tire):
         >>> tire.circumference()
         92.7
         """
-        total_diamater = (self._side_wall_inches() + self.chain_thickness) * 2 + self.diameter
+        side_wall_inches = self._side_wall_inches()
+        total_diamater = (side_wall_inches + self.chain_thickness) * 2 + self.diameter
         return round(total_diamater * math.pi, 1)
 
     # Override superclass __repr__ method to add to the end of the string.
