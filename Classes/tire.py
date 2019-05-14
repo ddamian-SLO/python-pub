@@ -56,4 +56,4 @@ class SnowTire(Tire):
 
     # Override superclass __repr__ method to add to the end of the string.
     def __repr__(self):
-        return super() + " (Snow)"
+        return super().__repr__() + " (Snow)"
