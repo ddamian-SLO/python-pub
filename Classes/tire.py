@@ -20,8 +20,8 @@ class Tire:
         >>> tire.circumference()
         80.1
         """
-        side_wall_inches = (self.width * (self.ratio / 100)) / 25.4
-        total_diamater = side_wall_inches * 2 + self.diameter
+        
+        total_diamater = self._side_wall_inches() * 2 + self.diameter
         return round(total_diamater * math.pi, 1)
 
     def __repr__(self):
@@ -30,3 +30,29 @@ class Tire:
         """
         return (f"{self.tire_type}{self.width}/{self.ratio}"
         + f"{self.construction}{self.diameter}")
+    
+    def _side_wall_inches(self):
+        return (self.width * (self.ratio / 100.0)) / 25.4
+
+# Inherited class from Tire.
+class SnowTire(Tire):
+    # Define new 
+    def __init__(self, tire_type, width, ratio, diameter, chain_thickness, brand='', construction='R'):
+        super().__init__(self, tire_type, width, ratio, diameter)
+        self.chain_thickness = chain_thickness
+
+    # Override superclass circumference method, use chain thickness in calc.    
+    def circumference(self):
+        """
+        The circumference of a tire w/ snow chains in inches.
+        
+        >>> tire = SnowTire('P', 205, 65, 15, 2)
+        >>> tire.circumference()
+        92.7
+        """
+        total_diamater = (self._side_wall_inches() + self.chain_thickness) * 2 + self.diameter
+        return round(total_diamater * math.pi, 1)
+
+    # Override superclass __repr__ method to add to the end of the string.
+    def __repr__(self):
+        return super() + " (Snow)"
