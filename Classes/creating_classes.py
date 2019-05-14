@@ -9,3 +9,9 @@ class Car:
 
     def description(self):
         print(f"A car with an {self.engine} engine, and {self.tires} tires.")
+
+    def wheel_circumference(self):
+        if len(self.tires) > 0:
+            return self.tires[0].circumference()
+        else:
+            return 0
