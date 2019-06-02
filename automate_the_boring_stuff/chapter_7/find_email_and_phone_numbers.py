@@ -49,8 +49,6 @@ def main():
     ([a-zA-Z0-9][\w.]+) # domain after
     (\.[a-zA-Z]{2,4})   # TLD
     )''', re.VERBOSE)
-    
-    # TODO: Create Regex Object for Email Addresses for all matches
 
     # TODO: Use pyperclip to pull clipboard info and assign it to variable.
 
