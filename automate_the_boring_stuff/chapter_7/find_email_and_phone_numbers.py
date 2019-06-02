@@ -38,20 +38,20 @@ def searchClipboard(regExPhone, regExEmail, inputText):
     regExPhoneList = regExPhone.findall(inputText)
     regExEmailList = regExEmail.findall(inputText)
 
-    for group in regExPhoneList:
+    for group in range(len(regExPhoneList)):
         matches.append(regExPhoneList[group][0])
-    for group in regExEmailList:
+    for group in range(len(regExEmailList)):
         matches.append(regExEmailList[group][0])
     return matches
 
 def main():
 
     phone_number_regex = re.compile(r'''(
-    (d{3}|\(\d{3}\))    # Area Code
+    (\d{3}|\(\d{3}\))    # Area Code
     (\s|-|\.)?          # Separator
-    \d\d\d              # 3 digits
+    (\d\d\d)              # 3 digits
     (\s|-|\.)           # Separator
-    \d\d\d\d            # Last 4 digits
+    (\d\d\d\d)            # Last 4 digits
     )''', re.VERBOSE)
 
     email_addr_regex = re.compile(r'''(
@@ -70,7 +70,8 @@ def main():
         pyperclip.copy('\n'.join(searchResults))
         print("Copied to clipboard:")
         print('\n'.join(searchResults))
-
+    else:
+        print(f'No phone numbers or email addresses found.')
 ###     RUN     ###
 main()
 ###     STOP    ###
