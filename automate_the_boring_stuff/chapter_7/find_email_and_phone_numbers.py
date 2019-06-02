@@ -33,6 +33,17 @@
 
 import re, pyperclip
 
+def searchClipboard(regExPhone, regExEmail, inputText):
+    matches = []
+    regExPhoneList = regExPhone.findall(inputText)
+    regExEmailList = regExEmail.findall(inputText)
+
+    for group in regExPhoneList:
+        matches.append(regExPhoneList[group][0])
+    for group in regExEmailList:
+        matches.append(regExEmailList[group][0])
+    return matches
+
 def main():
 
     phone_number_regex = re.compile(r'''(
@@ -51,6 +62,7 @@ def main():
     )''', re.VERBOSE)
 
     # TODO: Use pyperclip to pull clipboard info and assign it to variable.
+    text = str(pyperclip.paste())
 
     # TODO: Return List of Phone Numbers and Email addresses. If none found, notify. 
 
