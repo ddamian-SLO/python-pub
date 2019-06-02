@@ -15,7 +15,7 @@
 #   The 3 digits
 #   The separator again
 #   The 4 digits
-# TODO: Add Regex option to pull extensions. 
+
 
 # An email address is made of 2 parts: 
 #   name@domain.com
@@ -38,22 +38,21 @@ def searchClipboard(regExPhone, regExEmail, inputText):
     regExPhoneList = regExPhone.findall(inputText)
     regExEmailList = regExEmail.findall(inputText)
 
-    # TODO: Create universal format to display phone numbers.
-    #   Ex: 123-456-7890 and 123.456.7890 would both display as 123-456-7890
     for group in range(len(regExPhoneList)):
-        matches.append(regExPhoneList[group][0])
+        phoneNumber = '-'.join([regExPhoneList[group][1], regExPhoneList[group][3], regExPhoneList[group][5]])
+        matches.append(phoneNumber)
     for group in range(len(regExEmailList)):
         matches.append(regExEmailList[group][0])
     return matches
 
 def main():
-
+    # TODO: Add Regex option to pull extensions. 
     phone_number_regex = re.compile(r'''(
-    (\d{3}|\(\d{3}\))    # Area Code
+    (\d{3}|\(\d{3}\))   # Area Code
     (\s|-|\.)?          # Separator
-    (\d\d\d)              # 3 digits
+    (\d\d\d)            # 3 digits
     (\s|-|\.)           # Separator
-    (\d\d\d\d)            # Last 4 digits
+    (\d\d\d\d)          # Last 4 digits
     )''', re.VERBOSE)
 
     email_addr_regex = re.compile(r'''(
