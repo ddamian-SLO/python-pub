@@ -63,6 +63,14 @@ def main():
 
     # TODO: Use pyperclip to pull clipboard info and assign it to variable.
     text = str(pyperclip.paste())
-
+    searchResults = searchClipboard(phone_number_regex, email_addr_regex, text)
+    
     # TODO: Return List of Phone Numbers and Email addresses. If none found, notify. 
+    if len(searchResults) > 0:
+        pyperclip.copy('\n'.join(searchResults))
+        print("Copied to clipboard:")
+        print('\n'.join(searchResults))
 
+###     RUN     ###
+main()
+###     STOP    ###
