@@ -38,6 +38,8 @@ def searchClipboard(regExPhone, regExEmail, inputText):
     regExPhoneList = regExPhone.findall(inputText)
     regExEmailList = regExEmail.findall(inputText)
 
+    # TODO: Create universal format to display phone numbers.
+    #   Ex: 123-456-7890 and 123.456.7890 would both display as 123-456-7890
     for group in range(len(regExPhoneList)):
         matches.append(regExPhoneList[group][0])
     for group in range(len(regExEmailList)):
