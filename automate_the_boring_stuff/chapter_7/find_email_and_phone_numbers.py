@@ -42,6 +42,13 @@ def main():
     (\s|-|\.)           # Separator
     \d\d\d\d            # Last 4 digits
     )''', re.VERBOSE)
+
+    email_addr_regex = re.compile(r'''(
+    (\w[\w.]+)          # Account Name
+    (@)                 # @ sign
+    ([a-zA-Z0-9][\w.]+) # domain after
+    (\.[a-zA-Z]{2,4})   # TLD
+    )''', re.VERBOSE)
     
     # TODO: Create Regex Object for Email Addresses for all matches
 
