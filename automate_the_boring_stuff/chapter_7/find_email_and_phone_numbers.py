@@ -16,7 +16,6 @@
 #   The separator again
 #   The 4 digits
 
-
 # An email address is made of 2 parts: 
 #   name@domain.com
 #   Regex will need to check for:
@@ -34,32 +33,43 @@
 import re, pyperclip
 
 def searchClipboard(regExPhone, regExEmail, inputText):
+    '''
+    Function used to search text with specified regex objects and return
+    a list of phone numbers and email addresses. 
+    '''
     matches = []
     regExPhoneList = regExPhone.findall(inputText)
     regExEmailList = regExEmail.findall(inputText)
 
     for group in range(len(regExPhoneList)):
         phoneNumber = '-'.join([regExPhoneList[group][1], regExPhoneList[group][3], regExPhoneList[group][5]])
+        if regExPhoneList[8] != '':
+            phoneNumber += "x" + regExPhoneList[8]
         matches.append(phoneNumber)
     for group in range(len(regExEmailList)):
         matches.append(regExEmailList[group][0])
     return matches
 
 def main():
-    # TODO: Add Regex option to pull extensions. 
+    '''
+    Defines the regex objects for phone numbers and email addresses.
+    Copies modified text from searchResults() and pastes it back to the clipboard. 
+    '''
     phone_number_regex = re.compile(r'''(
-    (\d{3}|\(\d{3}\))   # Area Code
-    (\s|-|\.)?          # Separator
-    (\d\d\d)            # 3 digits
-    (\s|-|\.)           # Separator
-    (\d\d\d\d)          # Last 4 digits
+    (\d{3}|\(\d{3}\))?      # Area Code
+    (\s|-|\.)?              # Separator
+    (\d\d\d)                # 3 digits
+    (\s|-|\.)               # Separator
+    (\d\d\d\d)              # Last 4 digits
+    (x|ext\.)?              # Extension Separator
+    (\d{2,5})?              # Extension Number
     )''', re.VERBOSE)
 
     email_addr_regex = re.compile(r'''(
-    (\w[\w.]+)          # Account Name
-    (@)                 # @ sign
-    ([a-zA-Z0-9][\w.]+) # domain after
-    (\.[a-zA-Z]{2,4})   # TLD
+    (\w[\w.]+)              # Account Name
+    (@)                     # @ sign
+    ([a-zA-Z0-9][\w.]+)     # domain after
+    (\.[a-zA-Z]{2,4})       # TLD
     )''', re.VERBOSE)
 
     text = str(pyperclip.paste())
